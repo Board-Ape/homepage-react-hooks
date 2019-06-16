@@ -1,15 +1,5 @@
 import React, { useState, useEffect } from 'react';
 
-function StoryCard({ title, type, url }) {
-    return (
-        <div>
-            <h1>{title}</h1>
-            <h3><em>{type}</em></h3>
-            <a href={url} target="_blank">{url}</a>
-        </div>
-    )
-}
-
 function Stories() {
     const [stories, setStories] = useState([])
 
@@ -22,20 +12,23 @@ function Stories() {
             })
     }, []);
 
-    const displayCards = stories.map(story => {
-        console.log(story.title)
-        return (
-            <StoryCard
-                title={story.title}
-                type={story.type}
-                url={story.url}
-            />
-        )
-    })
-
     return (
-        <div>
-            {displayCards}
+        <div className='Stories'>
+            <h3>Stories</h3>
+            { 
+                stories.map(story => {
+                    let { id, by, time, title, url } = story;
+
+                    by = by[0].toUpperCase() + by.slice(1)
+
+                    return (
+                        <div key={id}>
+                            <a href={url} target="_blank">{title}</a>
+                            <div>{by} - {new Date(time * 1000).toLocaleString()}</div>
+                        </div> 
+                    )
+                })
+            }
         </div>
     )
 }
