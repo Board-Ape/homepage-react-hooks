@@ -26,10 +26,11 @@ function App() {
       <h1>Hello Sam!</h1>
       <div className="form">
         <input value={userQuery} onChange={updateUserQuery} onKeyPress={handleKeyPress}/>
-        <button onClick={searchQuery}>Search</button>
+        <button onClick={searchQuery}>Search Google</button>
       </div>
       <hr />
       <Joke />
+      <hr />
       <Stories />
     </div>
   )
