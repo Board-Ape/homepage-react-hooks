@@ -16,7 +16,7 @@ function Stories() {
 
                     return (
                         <div key={id}>
-                            <a href={url} target="_blank">{title}</a>
+                            <a href={url} target="_blank" rel="noopener noreferrer">{title}</a>
                             <div>{by} - {new Date(time * 1000).toLocaleString()}</div>
                         </div> 
                     )
