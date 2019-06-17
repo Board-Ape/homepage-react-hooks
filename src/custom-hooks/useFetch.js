@@ -12,4 +12,4 @@ const useFetch = (url, initialValue) => {
     return result
 }
 
-export default useFetch
+export default useFetch;
