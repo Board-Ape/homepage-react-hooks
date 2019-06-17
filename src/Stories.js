@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import useFetch from './custom-hooks/useFetch';
+import React from 'react';
+import { useFetch } from './hooks';
 
 
 function Stories() {

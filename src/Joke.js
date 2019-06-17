@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from 'react';
-import useFetch from './custom-hooks/useFetch';
+import React from 'react';
+import { useFetch } from './hooks';
 
 function Joke() {
     const joke = useFetch('https://official-joke-api.appspot.com/jokes/random', {})
