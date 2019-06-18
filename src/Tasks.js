@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import uuid from 'uuid/v4';
 
 function Tasks() {
     const [taskText, setTaskText] = useState('');
@@ -10,7 +11,7 @@ function Tasks() {
     }
 
     const addTask = () => {
-        setTasks([...tasks, taskText])
+        setTasks([...tasks, { taskText, id: uuid() }])
     }
 
     console.log('tasks', tasks);
@@ -21,6 +22,18 @@ function Tasks() {
             <div className='form'>
                 <input value={taskText} onChange={updateTaskText} />
                 <button onClick={addTask}>Add Task</button>
+            </div>
+            <div className='task-list'>
+                {
+                    tasks.map(task => {
+                        const { id, taskText } = task;
+                        return (
+                            <div key={id}>
+                                {taskText}
+                            </div>
+                        )
+                    })
+                }
             </div>
         </div>
     )
