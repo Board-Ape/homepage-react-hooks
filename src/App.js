@@ -1,14 +1,15 @@
 import React, {useState} from 'react'; 
 import Joke from './Joke';
 import Stories from './Stories';
+import Tasks from './Tasks';
 
 
 function App() {
   const [userQuery, setUserQuery] = useState('');
 
   const updateUserQuery = event => {
-    console.log('userQuery', userQuery);
     setUserQuery(event.target.value);
+    console.log('userQuery', userQuery);
   }
 
   const searchQuery = () => {
@@ -27,9 +28,12 @@ function App() {
       <div className="form">
         <input value={userQuery} onChange={updateUserQuery} onKeyPress={handleKeyPress}/>
         <button onClick={searchQuery}>Search Google</button>
+        {userQuery}
       </div>
       <hr />
       <Joke />
+      <hr />
+      <Tasks />
       <hr />
       <Stories />
     </div>
