@@ -22,7 +22,7 @@ function Tasks() {
             <div className='form'>
                 <input value={taskText} onChange={updateTaskText} />
                 <button onClick={addTask}>Add Task</button>
-            </div>
+            </div> 
             <div className='task-list'>
                 {
                     tasks.map(task => {
