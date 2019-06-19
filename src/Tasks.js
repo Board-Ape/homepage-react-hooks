@@ -3,8 +3,8 @@ import uuid from 'uuid/v4';
 
 function Tasks() {
     const [taskText, setTaskText] = useState('');
-    const [tasks, setTasks] = useState([]);
     const [completedTasks, setCompletedTasks] = useState([]);
+    const [tasks, setTasks] = useState([]);
 
     const updateTaskText = event => {
         setTaskText(event.target.value);
@@ -15,9 +15,13 @@ function Tasks() {
         setTaskText('')
     }
 
-    const completeTasks = completedTask => {
+    const completeTasks = completedTask => () => {
         setCompletedTasks([...completedTasks, completedTask]);
         setTasks(tasks.filter(task => task.id !== completedTask.id))
+    }
+
+    const deleteTask = deletedTask => () => {
+        setCompletedTasks(completedTasks.filter(tasks => tasks.id !== deletedTask.id))
     }
 
     console.log('tasks', tasks);
@@ -35,7 +39,7 @@ function Tasks() {
                     tasks.map(task => {
                         const { id, taskText } = task;
                         return (
-                            <div key={id} onClick={() => completeTasks(task)}>
+                            <div key={id} onClick={completeTasks(task)}>
                                 {taskText}
                             </div>
                         )
@@ -44,11 +48,12 @@ function Tasks() {
             </div>
             <div className='completed-list'>
                 {
-                    completedTasks.map(completedTask => {
-                        const { id, taskText } = completedTask;
+                    completedTasks.map(task => {
+                        const { id, taskText } = task;
                         return (
                             <div key={id}>
-                                {taskText}
+                                {taskText}{' '}
+                                <span onClick={deleteTask(task)} className='delete-task'>X</span>
                             </div>    
                         )
                     })
